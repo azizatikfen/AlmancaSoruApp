@@ -1,17 +1,7 @@
-import {
-	StyleSheet,
-	Platform,
-	Dimensions
-} from "react-native"
-const {
-	width,
-	height
-} = Dimensions.get("window")
+import { StyleSheet, Platform, Dimensions } from "react-native"
+const { width, height } = Dimensions.get("window")
 
-const top = Platform.select({
-	android: 0,
-	ios: 20
-})
+const top = Platform.select({ android: 0, ios: 20 })
 
 export default StyleSheet.create({
 	main: {

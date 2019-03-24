@@ -1,3 +1,6 @@
+/*
+@author Yusuf Turhan Papurcu <yusufturhanp@gmail.com>
+*/
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({

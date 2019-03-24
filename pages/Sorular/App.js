@@ -3,7 +3,7 @@
 */
 
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, AsyncStorage } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './style';
 
 let data = {
@@ -108,6 +108,7 @@ let data = {
 		}
 	}
 }
+let puan = 0
 export default class App extends Component {
 
 	render() {
@@ -116,7 +117,7 @@ export default class App extends Component {
 				<View style={styles.container1}>
 					<Text style={{ fontFamily: "Quicksand", fontSize: 20 }}>Almanca Soru Uygulamasi</Text>
 				</View>
-				<Soru navigation = {this.props.navigation} />
+				<Soru navigation={this.props.navigation} />
 			</View>
 		)
 	}
@@ -132,88 +133,103 @@ randInt = (min, max) => {
 class Soru extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { soru: {}, puan : 0 }
+		this.retrieveData = this.retrieveData.bind(this)
+		this.state = { soru: {}, }
 	}
 	componentWillMount() {
-		retrieveData().then(() => { this.setState({ soru: soru ,puan : puan}) })
+		const soru = this.retrieveData()
+		this.setState({ soru: soru })
 	}
+	_checkTrue = (secenek) => {
+		if (this.state.soru.Cevap === secenek) {
+			puan += 10
+		}
+		else {
+			puan -= 10
+		}
+	}
+	retrieveData = () => {
+		let id = randInt(1, 2);
+		let kademe = "kademe1"
+		if (puan >= 0 && puan <= 20) {
+			kademe = "kademe1"
+		}
+		else if (puan > 20 && puan <= 40) {
+			kademe = "kademe2"
+		}
+		else if (puan > 40 && puan <= 60) {
+			kademe = "kademe3"
+		}
+		else if (puan > 60 && puan <= 80) {
+			kademe = "kademe4"
+		}
+		else if (puan > 80 && puan < 100) {
+			kademe = "kademe5"
+		}
+		else if (puan >= 100) {
+			this.props.navigation.navigate("Finish")
+		}
+		soruText = "data." + kademe + ".id" + id
+		soru = eval(soruText)
+		return soru
+
+	};
+
 	render() {
 		return (
 			<View style={styles.soruMain}>
 				<Text style={styles.soruText}>
 					{this.state.soru.Soru}
 				</Text>
-				<TouchableOpacity style = {styles.soruSecenek}>
-					<Text style = {styles.soruSecenekText}>
+				<TouchableOpacity style={styles.soruSecenek} onPress={() => {
+					this._checkTrue("A", puan)
+					const soru = this.retrieveData()
+					this.setState({ soru: soru })
+				}}>
+					<Text style={styles.soruSecenekText}>
 						{this.state.soru.A}
 					</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style = {styles.soruSecenek}>
-					<Text style = {styles.soruSecenekText}>
+				<TouchableOpacity style={styles.soruSecenek} onPress={() => {
+					this._checkTrue("B", puan)
+					const soru = this.retrieveData()
+					this.setState({ soru: soru })
+				}}>
+					<Text style={styles.soruSecenekText}>
 						{this.state.soru.B}
 					</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style = {styles.soruSecenek}>
-					<Text style = {styles.soruSecenekText}>
+				<TouchableOpacity style={styles.soruSecenek} onPress={() => {
+					this._checkTrue("C", puan)
+					const soru = this.retrieveData()
+					this.setState({ soru: soru })
+				}}>
+					<Text style={styles.soruSecenekText}>
 						{this.state.soru.C}
 					</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style = {styles.soruSecenek}>
-					<Text style = {styles.soruSecenekText}>
+				<TouchableOpacity style={styles.soruSecenek} onPress={() => {
+					this._checkTrue("D", puan)
+					const soru = this.retrieveData()
+					this.setState({ soru: soru })
+				}}>
+					<Text style={styles.soruSecenekText}>
 						{this.state.soru.D}
 					</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style = {styles.soruSecenek}>
-					<Text style = {styles.soruSecenekText}>
+				<TouchableOpacity style={styles.soruSecenek} onPress={() => {
+					this._checkTrue("E", puan)
+					const soru = this.retrieveData()
+					this.setState({ soru: soru })
+				}}>
+					<Text style={styles.soruSecenekText}>
 						{this.state.soru.E}
 					</Text>
 				</TouchableOpacity>
-				<Text style = {[styles.soruSecenekText,{marginTop:50}]}>Puan : {this.state.puan}</Text>
-				<TouchableOpacity onPress = {()=>{this.props.navigation.navigate("Finish")}}><Text style = {[styles.soruSecenekText,{marginTop:20}]}>Cikis</Text></TouchableOpacity>
+				<Text style={[styles.soruSecenekText, { marginTop: 50 }]}>Puan : {puan}</Text>
+				<TouchableOpacity onPress={() => { this.props.navigation.navigate("Finish") }}><Text style={[styles.soruSecenekText, { marginTop: 20 }]}>Cikis</Text></TouchableOpacity>
 			</View>
 		)
 	}
 
 }
-
-retrieveData = async () => {
-	try {
-		const value = await AsyncStorage.getItem('Score');
-		if (value !== null) {
-			puan = parseInt(value);
-			let id = randInt(1, 2);
-			let kademe = ""
-			if (puan >= 0 && puan <= 20) {
-				kademe = "kademe1"
-			}
-			else if (puan > 20 && puan <= 40) {
-				kademe = "kademe2"
-			}
-			else if (puan > 40 && puan <= 60) {
-				kademe = "kademe3"
-			}
-			else if (puan > 60 && puan <= 80) {
-				kademe = "kademe4"
-			}
-			else if (puan > 80 && puan < 100) {
-				kademe = "kademe5"
-			}
-			else if (puan === 100) {
-				this.props.navigation.navigate(`Finish`)
-			}
-			soruText = "data." + kademe + ".id" + id
-			soru = eval(soruText)
-			return soru,puan
-		}
-	} catch (error) {
-		console.log(error);
-	}
-};
-
-/*
-<TouchableOpacity onPress = {()=>{
-	retrieveData().then((soru)=>{this.setState({soru:soru})})
-	}}>
-	<Text>State Yenile</Text>
-</TouchableOpacity>
-*/
