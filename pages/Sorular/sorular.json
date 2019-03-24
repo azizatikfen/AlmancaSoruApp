@@ -1,0 +1,102 @@
+{
+  "kademe1": {
+    "id1": {
+      "Soru": "Nasilsin",
+      "A": "Cok iyi",
+      "B": "iyi",
+      "C": "Eh iste",
+      "D": "Kotu",
+      "E": "Cok Kotu",
+      "Cevap": "A"
+    },
+    "id2": {
+      "Soru": "Nasilsin",
+      "A": "Cok iyi",
+      "B": "iyi",
+      "C": "Eh iste",
+      "D": "Kotu",
+      "E": "Cok Kotu",
+      "Cevap": "A"
+    }
+  },
+  "kademe2": {
+    "id1": {
+      "Soru": "Nasilsin",
+      "A": "Cok iyi",
+      "B": "iyi",
+      "C": "Eh iste",
+      "D": "Kotu",
+      "E": "Cok Kotu",
+      "Cevap": "A"
+    },
+    "id2": {
+      "Soru": "Nasilsin",
+      "A": "Cok iyi",
+      "B": "iyi",
+      "C": "Eh iste",
+      "D": "Kotu",
+      "E": "Cok Kotu",
+      "Cevap": "A"
+    }
+  },
+  "kademe3": {
+    "id1": {
+      "Soru": "Nasilsin",
+      "A": "Cok iyi",
+      "B": "iyi",
+      "C": "Eh iste",
+      "D": "Kotu",
+      "E": "Cok Kotu",
+      "Cevap": "A"
+    },
+    "id2": {
+      "Soru": "Nasilsin",
+      "A": "Cok iyi",
+      "B": "iyi",
+      "C": "Eh iste",
+      "D": "Kotu",
+      "E": "Cok Kotu",
+      "Cevap": "A"
+    }
+  },
+  "kademe4": {
+    "id1": {
+      "Soru": "Nasilsin",
+      "A": "Cok iyi",
+      "B": "iyi",
+      "C": "Eh iste",
+      "D": "Kotu",
+      "E": "Cok Kotu",
+      "Cevap": "A"
+    },
+    "id2": {
+      "Soru": "Nasilsin",
+      "A": "Cok iyi",
+      "B": "iyi",
+      "C": "Eh iste",
+      "D": "Kotu",
+      "E": "Cok Kotu",
+      "Cevap": "A"
+    }
+  },
+  "kademe5": {
+    "id1": {
+      "Soru": "Nasilsin",
+      "A": "Cok iyi",
+      "B": "iyi",
+      "C": "Eh iste",
+      "D": "Kotu",
+      "E": "Cok Kotu",
+      "Cevap": "A"
+    },
+    "id2": {
+      "Soru": "Nasilsin",
+      "A": "Cok iyi",
+      "B": "iyi",
+      "C": "Eh iste",
+      "D": "Kotu",
+      "E": "Cok Kotu",
+      "Cevap": "A"
+    }
+  }
+}
