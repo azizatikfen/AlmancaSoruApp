@@ -116,10 +116,7 @@ export default class App extends Component {
 				<View style={styles.container1}>
 					<Text style={{ fontFamily: "Quicksand", fontSize: 20 }}>Almanca Soru Uygulamasi</Text>
 				</View>
-				<Soru />
-				<View style={styles.container2}>
-
-				</View>
+				<Soru navigation = {this.props.navigation} />
 			</View>
 		)
 	}
@@ -135,10 +132,10 @@ randInt = (min, max) => {
 class Soru extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { soru: {}, rndr: false }
+		this.state = { soru: {}, puan : 0 }
 	}
 	componentWillMount() {
-		retrieveData().then((soru) => { this.setState({ soru: soru }) })
+		retrieveData().then(() => { this.setState({ soru: soru ,puan : puan}) })
 	}
 	render() {
 		return (
@@ -171,6 +168,8 @@ class Soru extends Component {
 						{this.state.soru.E}
 					</Text>
 				</TouchableOpacity>
+				<Text style = {[styles.soruSecenekText,{marginTop:50}]}>Puan : {this.state.puan}</Text>
+				<TouchableOpacity onPress = {()=>{this.props.navigation.navigate("Finish")}}><Text style = {[styles.soruSecenekText,{marginTop:20}]}>Cikis</Text></TouchableOpacity>
 			</View>
 		)
 	}
@@ -204,7 +203,7 @@ retrieveData = async () => {
 			}
 			soruText = "data." + kademe + ".id" + id
 			soru = eval(soruText)
-			return soru
+			return soru,puan
 		}
 	} catch (error) {
 		console.log(error);

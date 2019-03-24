@@ -5,8 +5,8 @@ import styles from './styles';
 export default class App extends Component{
   render(){
     return(
-      <View>
-        
+      <View style = {{alignItems:"center",justifyContent:"center"}}>
+        <Text>Finish Man!!</Text>
       </View>
     )
   }

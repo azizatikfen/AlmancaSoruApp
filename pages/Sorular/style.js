@@ -25,11 +25,6 @@ export default StyleSheet.create({
 		justifyContent: "center",
 		borderBottomWidth: 0.2
 	},
-	container2: {
-		width: width,
-		height: height / 10,
-		backgroundColor: `#000`
-	},
 	soruMain: {
 		height: height / 10 * 7.8,
 		width: width,
