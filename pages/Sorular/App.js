@@ -115,7 +115,7 @@ export default class App extends Component {
 		return (
 			<View style={styles.main}>
 				<View style={styles.container1}>
-					<Text style={{ fontFamily: "Quicksand", fontSize: 20 }}>Almanca Soru Uygulamasi</Text>
+					<Text style={{ fontFamily: "Quicksand", fontSize: 20 }}>Almanca Soru Uygulaması</Text>
 				</View>
 				<Soru navigation={this.props.navigation} />
 			</View>
@@ -167,7 +167,7 @@ class Soru extends Component {
 			kademe = "kademe5"
 		}
 		else if (puan >= 100) {
-			this.props.navigation.navigate("Finish")
+			this.props.navigation.navigate("Finish", { puan: puan })
 		}
 		soruText = "data." + kademe + ".id" + id
 		soru = eval(soruText)
@@ -227,7 +227,7 @@ class Soru extends Component {
 					</Text>
 				</TouchableOpacity>
 				<Text style={[styles.soruSecenekText, { marginTop: 50 }]}>Puan : {puan}</Text>
-				<TouchableOpacity onPress={() => { this.props.navigation.navigate("Finish") }}><Text style={[styles.soruSecenekText, { marginTop: 20 }]}>Cikis</Text></TouchableOpacity>
+				<TouchableOpacity onPress={() => { this.props.navigation.navigate("Finish", { puan: puan }) }}><Text style={[styles.soruSecenekText, { marginTop: 20 }]}>Çıkış</Text></TouchableOpacity>
 			</View>
 		)
 	}
